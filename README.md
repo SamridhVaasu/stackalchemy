@@ -1,7 +1,7 @@
 # StackAlchemy 🪴
 
 <div align="center">
-  <img src="public/logo.jpeg" alt="StackAlchemy Logo" width="120" height="120" style="border-radius: 20px"/>
+  <img src="public/logo.jpeg" alt="StackAlchemy Logo" width="150" height="150" style="border-radius: 20px"/>
   <h3>Transform your repository into something magical</h3>
 </div>
 
