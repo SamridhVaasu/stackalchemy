@@ -1,7 +1,7 @@
 # StackAlchemy 🪴
 
 <div align="center">
-  <img src="public/logo.jpeg" alt="StackAlchemy Logo" width="120" height="120" style="border-radius: 20px"/>
+  <img src="logo.jpeg" alt="StackAlchemy Logo" width="120" height="120" style="border-radius: 20px"/>
   <h3>Transform your repository into something magical</h3>
 </div>
 
@@ -126,5 +126,6 @@ For support, please open an issue or contact us at support@stackalchemy.com
 <div align="center">
   Made with ❤️ by the StackAlchemy Team
 </div>
+# stackalchemy
 # stackalchemy
 # stackalchemy
