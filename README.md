@@ -1,7 +1,7 @@
 # StackAlchemy 🪴
 
 <div align="center">
-  <img src="logo.jpeg" alt="StackAlchemy Logo" width="120" height="120" style="border-radius: 20px"/>
+  <img src="public/logo.jpeg" alt="StackAlchemy Logo" width="120" height="120" style="border-radius: 20px"/>
   <h3>Transform your repository into something magical</h3>
 </div>
 
@@ -19,6 +19,11 @@ StackAlchemy is an AI-powered platform that helps developers understand and navi
 - 🎨 **Modern UI**: Beautiful, responsive interface with dark mode support
 
 ## System Architecture
+
+<div align="center">
+  <img src="public/diagram.png" alt="StackAlchemy Logo" width="900" height="900" style="border-radius: 20px"/>
+</div>
+
 
 ```mermaid
 graph TD
