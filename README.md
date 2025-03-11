@@ -32,17 +32,6 @@ graph TD
     F -->|Search| G
 ```
 
-## Screenshots
-
-<div align="center">
-  <img src="docs/images/dashboard.png" alt="Dashboard" width="45%"/>
-  <img src="docs/images/code-analysis.png" alt="Code Analysis" width="45%"/>
-</div>
-<div align="center">
-  <img src="docs/images/qa-interface.png" alt="Q&A Interface" width="45%"/>
-  <img src="docs/images/commit-history.png" alt="Commit History" width="45%"/>
-</div>
-
 ## Getting Started
 
 ### Prerequisites
@@ -108,24 +97,3 @@ npm run dev
 - Prisma for database management
 - Vector database for semantic search
 - Gemini 1.5 for AI processing
-
-## Contributing
-
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Support
-
-For support, please open an issue or contact us at support@stackalchemy.com
-
----
-
-<div align="center">
-  Made with ❤️ by the StackAlchemy Team
-</div>
-# stackalchemy
-# stackalchemy
-# stackalchemy
