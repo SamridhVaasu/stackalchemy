@@ -1,99 +1,184 @@
-# StackAlchemy 🪴
+# StackAlchemy
 
-<div align="center">
-  <img src="public/logo.jpeg" alt="StackAlchemy Logo" width="120" height="120" style="border-radius: 20px"/>
-  <h3>Transform your repository into something magical</h3>
-</div>
+A modern stack-based architecture for seamless application development and deployment.
 
-## Overview
+## 📖 Overview
 
-StackAlchemy is an AI-powered platform that helps developers understand and navigate their codebase through natural language interactions. It provides intelligent code analysis, contextual answers, and real-time collaboration features.
+StackAlchemy offers a unified platform where developers can manage projects, index GitHub repositories, and interact with rich API endpoints. Built with robust transaction management and error handling, it securely integrates various services for project monitoring and deep code analysis.
 
-## Features
-
-- 🤖 **Natural Language Code Queries**: Ask questions about your codebase in plain English
-- 📊 **Intelligent Code Analysis**: Get instant insights and references from your code
-- 🔍 **Context-Aware Responses**: AI understands your project's structure and dependencies
-- 💾 **Save & Share**: Save important answers and share them with your team
-- 📈 **Real-time Updates**: Track commits and changes in your repository
-- 🎨 **Modern UI**: Beautiful, responsive interface with dark mode support
-
-## System Architecture
+## 🏗 Architecture
 
 ```mermaid
-graph TD
-    A[GitHub Repository] -->|Webhook| B[StackAlchemy Backend]
-    B -->|Analysis| C[Code Parser]
-    B -->|Store| D[(Database)]
-    E[User Interface] -->|Query| B
-    B -->|Stream| F[AI Engine]
-    F -->|Response| E
-    C -->|Index| G[Vector Store]
-    F -->|Search| G
+flowchart TD
+    subgraph Client
+      A[Web/App Clients]:::client
+      style A fill:#f0f9ff,stroke:#0a74da,stroke-width:2px
+    end
+    subgraph "API Layer"
+      B[API Gateway]:::api
+      C[REST/GraphQL Endpoints]:::api
+      style B fill:#e8f8f5,stroke:#00b894,stroke-width:2px
+      style C fill:#e8f8f5,stroke:#00b894,stroke-width:2px
+    end
+    subgraph Server[Service & Business Logic]
+      D[Business Logic & Validation]:::logic
+      E[Transaction & Error Handling]:::logic
+      style D fill:#fff3e0,stroke:#ff9800,stroke-width:2px
+      style E fill:#fff3e0,stroke:#ff9800,stroke-width:2px
+    end
+    subgraph Persistence
+      F[(PostgreSQL Database)]:::db
+      G[(Redis Cache)]:::db
+      style F fill:#e3f2fd,stroke:#2196f3,stroke-width:2px
+      style G fill:#e3f2fd,stroke:#2196f3,stroke-width:2px
+    end
+    subgraph External
+      H[GitHub Indexer]:::ext
+      style H fill:#fce4ec,stroke:#e91e63,stroke-width:2px
+    end
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+    E --> G
+    D -.-> H
 ```
 
-## Getting Started
+## 🔄 System Flow
 
-### Prerequisites
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as U
+    participant FE as Frontend
+    participant GW as API Gateway
+    participant SV as Service Layer
+    participant DB as Database
+    participant GH as GitHub Indexer
 
-- Node.js 18+
-- GitHub account
-- Database (PostgreSQL recommended)
+    U->>FE: Interact with Dashboard/UI
+    FE->>GW: Send API Request (e.g., Create Project)
+    GW->>SV: Forward Request with Auth & Validation
+    SV->>DB: Initiate Transaction
+    DB-->>SV: Return Results
+    SV->>GW: Send Consolidated Response
+    GW->>FE: Deliver Final Response
+    FE->>U: Render UI Update
+    alt GitHub indexing triggered
+      SV->>GH: Index new GitHub repo
+      GH-->>SV: Return indexing status
+    end
+```
 
-### Installation
+## 🔍 Process Overview
 
-1. Clone the repository:
+```mermaid
+flowchart LR
+    A[User Input & API Call] --> B[Authentication & Input Validation]
+    B --> C[Business Logic Execution]
+    C --> D[Database Transaction & Commit]
+    C --> E[External Service Integration]
+    D --> F[Successful Response]
+    E --> F
+    C --> G[Error Detection]
+    G --> H[Rollback & Logging]
+    H --> I[Error Response]
+```
+
+## ✨ Features
+
+- High Performance
+- Enhanced Security
+- Scalability
+- Real-time Updates
+- Easy Integration
+- Monitoring & Analytics
+
+## 🛠 Installation
+
 ```bash
 git clone https://github.com/yourusername/stackalchemy.git
 cd stackalchemy
-```
-
-2. Install dependencies:
-```bash
 npm install
 ```
 
-3. Set up environment variables:
+## 🚀 Getting Started
+
+1. Configure your environment:
 ```bash
 cp .env.example .env
 ```
 
-4. Configure your environment variables:
-```env
-DATABASE_URL="postgresql://..."
-GITHUB_CLIENT_ID="your_github_client_id"
-GITHUB_CLIENT_SECRET="your_github_client_secret"
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY="your_clerk_key"
-```
-
-5. Run migrations:
-```bash
-npx prisma migrate dev
-```
-
-6. Start the development server:
+2. Start the development server:
 ```bash
 npm run dev
 ```
 
-## How It Works
+## 📊 Component Structure
 
-1. **Repository Connection**: Connect your GitHub repository through our simple setup process.
-2. **Code Analysis**: StackAlchemy analyzes your codebase and builds a semantic understanding of your project structure.
-3. **Natural Language Interface**: Ask questions about your code in plain English through our intuitive interface.
-4. **AI-Powered Responses**: Get detailed answers with relevant code files and file references.
-5. **Continuous Updates**: Stay synchronized with your repository through real-time commit tracking.
+```mermaid
+classDiagram
+    class ProjectController {
+        +createProject()
+        +getCommits()
+        +saveAnswer()
+        +deleteProject()
+    }
+    class DBClient {
+        +transaction()
+        +findUnique()
+        +findFirst()
+        +deleteMany()
+    }
+    class GitHubIndexer {
+        +indexRepo()
+    }
+    class AuthService {
+        +verifyUser()
+    }
+    ProjectController --> DBClient : uses
+    ProjectController --> GitHubIndexer : indexes
+    ProjectController --> AuthService : validates
+```
 
-## Key Components
+## 🧩 Database Schema Overview
 
-### Frontend
-- Next.js 14 with App Router
-- Tailwind CSS for styling
-- Clerk for authentication
-- tRPC for type-safe API calls
+```mermaid
+erDiagram
+    USER {
+      String id PK
+      String firstName
+      String lastName
+      String emailAddress
+    }
+    PROJECT {
+      String id PK
+      String name
+      String githubUrl
+      DateTime createdAt
+    }
+    USER_TO_PROJECT {
+      String id PK
+      String userId FK
+      String projectId FK
+    }
+    QUESTION {
+      String id PK
+      String question
+      String answer
+      DateTime createdAt
+    }
+    USER ||--o{ USER_TO_PROJECT : "has"
+    PROJECT ||--o{ USER_TO_PROJECT : "associated with"
+    PROJECT ||--o{ QUESTION : "contains"
+    USER ||--o{ QUESTION : "asks"
+```
 
-### Backend
-- Node.js with TypeScript
-- Prisma for database management
-- Vector database for semantic search
-- Gemini 1.5 for AI processing
+## ⚙️ API Endpoints
+
+- Create Project: Validates users, ensures no duplicate GitHub URLs, creates projects within a transaction, and indexes GitHub repositories.
+- Get Commits: Polls and returns the commit history for a project.
+- Save Answer: Stores user questions and corresponding answers alongside file references.
+- Delete Project: Removes a project and its related records, ensuring system consistency.
